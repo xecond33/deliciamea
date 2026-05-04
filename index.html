@@ -1,0 +1,802 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Selamat Ulang Tahun❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --pink: #ff6fa3;
+      --pink-light: #ffd7e9;
+      --pink-mid: #ffb3d1;
+      --cream: #fff8f1;
+      --paper: #fffdf7;
+      --text: #5b2a3a;
+      --muted: #9b6b7a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: Poppins, sans-serif;
+      background: radial-gradient(circle at 20% 20%, #ffe0f0, #fff6fb 60%);
+      color: var(--text);
+      overflow-x: hidden;
+      padding: 20px;
+    }
+
+    /* ====== HERO CARD ====== */
+    .hero {
+      width: min(500px, 100%);
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(10px);
+      border-radius: 28px;
+      padding: 28px 24px;
+      box-shadow: 0 12px 50px rgba(230, 130, 190, 0.25);
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-family: Pacifico, cursive;
+      font-size: clamp(24px, 6vw, 38px);
+      color: var(--pink);
+      margin-bottom: 8px
+    }
+
+    .hero p {
+      font-size: clamp(13px, 3.5vw, 15px);
+      color: var(--muted);
+      margin-bottom: 16px;
+      line-height: 1.6
+    }
+
+    .typewriter {
+      font-weight: 600;
+      font-size: clamp(13px, 3.8vw, 17px);
+      min-height: 24px;
+      color: var(--pink);
+      margin-bottom: 18px
+    }
+
+    .avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 12px;
+      border: 4px solid var(--pink-light);
+      box-shadow: 0 6px 20px rgba(255, 111, 163, 0.3)
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    }
+
+    .btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center
+    }
+
+    .btn {
+      padding: 11px 18px;
+      border-radius: 14px;
+      border: 0;
+      font-family: Poppins, sans-serif;
+      font-weight: 600;
+      font-size: clamp(12px, 3.5vw, 14px);
+      cursor: pointer;
+      transition: all .2s;
+      flex: 1 1 auto;
+      max-width: 200px
+    }
+
+    .btn-pink {
+      background: linear-gradient(135deg, var(--pink-mid), var(--pink));
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(255, 111, 163, 0.35)
+    }
+
+    .btn-ghost {
+      background: rgba(255, 111, 163, 0.1);
+      color: var(--pink);
+      border: 1.5px solid var(--pink-mid)
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(255, 111, 163, 0.4)
+    }
+
+    .btn:active {
+      transform: translateY(1px)
+    }
+
+    /* ====== OVERLAY ====== */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 16px;
+      background: rgba(80, 20, 50, 0.45);
+      backdrop-filter: blur(6px);
+    }
+
+    .overlay.show {
+      display: flex
+    }
+
+    /* ====== BOOK WRAPPER ====== */
+    .book-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+      max-width: 680px;
+    }
+
+    /* ====== BOOK ====== */
+    .book {
+      width: 100%;
+      max-width: 680px;
+      position: relative;
+      border-radius: 8px 20px 20px 8px;
+      box-shadow: -6px 0 0 #c25080, 0 20px 60px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+      aspect-ratio: 3/2;
+    }
+
+    @media(max-width:480px) {
+      .book {
+        aspect-ratio: 4/5;
+        max-width: 100%
+      }
+    }
+
+    /* Spine */
+    .book::before {
+      content: '📖 Scrapbook';
+      writing-mode: vertical-rl;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 28px;
+      background: linear-gradient(180deg, #e0537a, #c03060);
+      color: #fff;
+      font-family: Pacifico, cursive;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: 2px;
+      z-index: 10;
+      padding: 8px 0;
+      box-shadow: inset -3px 0 6px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ====== SPREADS ====== */
+    .spread {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      left: 100%;
+      transition: left 0.55s cubic-bezier(.77, 0, .18, 1);
+    }
+
+    .spread.active {
+      left: 0
+    }
+
+    .spread.prev {
+      left: -100%
+    }
+
+    /* Pages */
+    .page {
+      flex: 1;
+      height: 100%;
+      padding: clamp(10px, 2.5vw, 22px);
+      padding-left: clamp(18px, 4vw, 40px);
+      position: relative;
+      overflow: hidden
+    }
+
+    .page-left {
+      background: linear-gradient(170deg, #fff8f0, #fff0f6);
+      border-right: 2px dashed rgba(255, 111, 163, 0.2);
+    }
+
+    .page-right {
+      background: linear-gradient(170deg, #fff6fb, #fff0f8);
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    /* Page number */
+    .page-num {
+      position: absolute;
+      bottom: 8px;
+      font-size: 11px;
+      color: var(--muted);
+      opacity: 0.6
+    }
+
+    .page-left .page-num {
+      right: 10px
+    }
+
+    .page-right .page-num {
+      left: 10px
+    }
+
+    /* Lines decoration */
+    .page-left::after {
+      content: '';
+      position: absolute;
+      left: 28px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: rgba(255, 111, 163, 0.15);
+    }
+
+    /* ====== POLAROID ====== */
+    .polaroid {
+      background: #fff;
+      padding: clamp(6px, 1.5vw, 10px) clamp(6px, 1.5vw, 10px) clamp(18px, 4vw, 28px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+      border-radius: 4px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -55%) rotate(-4deg);
+      width: clamp(120px, 55%, 220px);
+      transition: transform .3s;
+    }
+
+    .polaroid:hover {
+      transform: translate(-50%, -55%) rotate(0deg) scale(1.04)
+    }
+
+    .polaroid img {
+      width: 100%;
+      height: clamp(90px, 30vw, 170px);
+      object-fit: cover;
+      display: block;
+      border-radius: 2px
+    }
+
+    .polaroid-cap {
+      text-align: center;
+      margin-top: 6px;
+      font-family: Pacifico, cursive;
+      color: var(--pink);
+      font-size: clamp(10px, 2vw, 14px)
+    }
+
+    /* Tape */
+    .tape {
+      position: absolute;
+      top: clamp(6px, 2%, 14px);
+      left: 50%;
+      transform: translateX(-50%) rotate(-6deg);
+      width: clamp(36px, 12%, 60px);
+      height: 14px;
+      background: rgba(255, 200, 230, 0.55);
+      border-radius: 2px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Stickers */
+    .sticker {
+      position: absolute;
+      font-size: clamp(16px, 4vw, 26px);
+      user-select: none;
+      pointer-events: none
+    }
+
+    /* ====== NOTE PAPER ====== */
+    .note-paper {
+      background: var(--paper);
+      border-radius: 14px;
+      padding: clamp(14px, 3vw, 24px);
+      font-size: clamp(11px, 3vw, 15px);
+      line-height: 1.7;
+      color: var(--text);
+      box-shadow: 0 4px 20px rgba(200, 100, 150, 0.12), inset 0 0 0 1px rgba(255, 111, 163, 0.1);
+      text-align: center;
+      max-width: 95%;
+      position: relative;
+    }
+
+    .note-paper::before {
+      content: '"';
+      font-family: Pacifico, cursive;
+      font-size: clamp(30px, 8vw, 60px);
+      color: var(--pink-light);
+      position: absolute;
+      top: -10px;
+      left: 10px;
+      line-height: 1;
+    }
+
+    /* Cover special */
+    .cover-page {
+      background: linear-gradient(135deg, #ff8fb6, #ff6fa3, #e84d8a);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .cover-title {
+      font-family: Pacifico, cursive;
+      font-size: clamp(18px, 5vw, 34px);
+      margin-bottom: 6px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2)
+    }
+
+    .cover-sub {
+      font-size: clamp(11px, 3vw, 15px);
+      opacity: 0.9;
+      line-height: 1.5
+    }
+
+    .cover-heart {
+      font-size: clamp(40px, 12vw, 80px);
+      margin-bottom: 10px;
+      animation: pulse 1.5s infinite
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1)
+      }
+
+      50% {
+        transform: scale(1.12)
+      }
+    }
+
+    /* ====== NAV BUTTONS ====== */
+    .book-nav {
+      display: flex;
+      gap: 14px;
+      align-items: center
+    }
+
+    .nav-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 0;
+      background: linear-gradient(135deg, var(--pink-mid), var(--pink));
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(255, 111, 163, 0.4);
+      transition: all .2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-btn:hover {
+      transform: scale(1.12)
+    }
+
+    .nav-btn:active {
+      transform: scale(0.95)
+    }
+
+    .nav-btn:disabled {
+      background: #ddd;
+      box-shadow: none;
+      cursor: default
+    }
+
+    .page-indicator {
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      opacity: 0.9
+    }
+
+    .close-btn {
+      padding: 10px 24px;
+      border-radius: 14px;
+      border: 0;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      font-family: Poppins, sans-serif;
+      transition: all .2s;
+    }
+
+    .close-btn:hover {
+      background: rgba(255, 255, 255, 0.35)
+    }
+
+    /* ====== FLOATING HEARTS ====== */
+    .heart {
+      position: fixed;
+      bottom: -40px;
+      transform: rotate(-45deg);
+      pointer-events: none
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      background: inherit;
+      border-radius: 50%
+    }
+
+    .heart::before {
+      top: -50%;
+      left: 0;
+      width: 100%;
+      height: 100%
+    }
+
+    .heart::after {
+      left: 50%;
+      top: 0;
+      width: 100%;
+      height: 100%
+    }
+
+    canvas.confetti {
+      position: fixed;
+      inset: 0;
+      z-index: 30;
+      pointer-events: none
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #fff0f6
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--pink-mid);
+      border-radius: 3px
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO CARD -->
+  <div class="hero">
+    <div class="avatar"><img src="media/fto.jpeg" alt="foto"></div>
+    <h1>Selamat Ulang Tahun Sayang✨</h1>
+    <p>Semoga hari-hari kamu penuh tawa, kebahagiaan,<br>dan semua hal manis yang kamu suka 🌸</p>
+    <div class="typewriter" id="typewriter"></div>
+    <div class="btns">
+      <button class="btn btn-pink" id="playMusic">▶ Putar Musik</button>
+      <button class="btn btn-ghost" id="toggleHearts">💕 Floating Heart</button>
+      <button class="btn btn-pink" id="openBook">📖 Buka Scrapbook</button>
+      <button class="btn btn-ghost" id="shareBtn">💾 Simpan</button>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:14px">For: <strong>Asaa</strong> — dariku yang selalu
+      mengagumimu 🌷</p>
+  </div>
+
+  <audio id="bgMusic" src="media/ultah.mp3" loop></audio>
+  <canvas class="confetti" id="confettiCanvas" aria-hidden="true"></canvas>
+
+  <!-- BOOK OVERLAY -->
+  <div class="overlay" id="bookOverlay">
+    <div class="book-wrap">
+
+      <!-- THE BOOK -->
+      <div class="book" id="theBook">
+
+        <!-- COVER / Halaman 0 -->
+        <div class="spread active" id="s0">
+          <div class="page cover-page" style="flex:1;border-radius:0 0 0 0">
+            <div class="cover-heart">💖</div>
+            <div class="cover-title">Scrapbook Kamu</div>
+            <div class="cover-sub">Selamat Ulang Tahun<br><em>Asaa</em> 🎂</div>
+            <div style="margin-top:14px;font-size:22px">✨🌸🎀</div>
+          </div>
+          <div class="page page-right" style="background:linear-gradient(135deg,#ffe0ef,#ffd7e9)">
+            <div class="note-paper">
+              Buka halaman ini dengan hati yang ringan dan senyuman yang manis ya 🌷<br><br>
+              Setiap halaman ada sepotong doa dan rasa untukmu 💕
+            </div>
+            <span class="sticker" style="top:8%;right:8%">🎀</span>
+            <span class="sticker" style="bottom:10%;left:10%">⭐</span>
+          </div>
+        </div>
+
+        <!-- HALAMAN 1 -->
+        <div class="spread" id="s1">
+          <div class="page page-left">
+            <div class="tape"></div>
+            <div class="polaroid">
+              <img src="media/ft1.jpeg" alt="foto 1">
+              <div class="polaroid-cap">si paling cantik 💕</div>
+            </div>
+            <span class="sticker" style="bottom:12%;left:8%">🌸</span>
+            <span class="sticker" style="top:8%;right:6%">💫</span>
+            <span class="page-num">1</span>
+          </div>
+          <div class="page page-right">
+            <div class="note-paper">
+              Selamat ulang tahun cantik. Semoga hari ini jadi awal hal-hal baik yang terus datang. 💖
+            </div>
+            <span class="sticker" style="top:10%;right:6%">🎈</span>
+            <span class="page-num">2</span>
+          </div>
+        </div>
+
+        <!-- HALAMAN 2 -->
+        <div class="spread" id="s2">
+          <div class="page page-left">
+            <div class="tape"></div>
+            <div class="polaroid" style="transform:translate(-50%,-55%) rotate(3deg)">
+              <img src="media/ft2.jpeg" alt="foto 2">
+              <div class="polaroid-cap">si paling manis 💕</div>
+            </div>
+            <span class="sticker" style="bottom:10%;right:8%">🍬</span>
+            <span class="page-num">3</span>
+          </div>
+          <div class="page page-right">
+            <div class="note-paper">
+              Semoga kamu yang always manis ini selalu sehat, tenang, dan kuat menjalani setiap langkah ke depan 🌷
+            </div>
+            <span class="sticker" style="bottom:8%;right:6%">🌼</span>
+            <span class="page-num">4</span>
+          </div>
+        </div>
+
+        <!-- HALAMAN 3 -->
+        <div class="spread" id="s3">
+          <div class="page page-left">
+            <div class="tape"></div>
+            <div class="polaroid">
+              <img src="media/ft3.jpeg" alt="foto 3">
+              <div class="polaroid-cap">si paling imut 💕</div>
+            </div>
+            <span class="sticker" style="bottom:12%;left:6%">🎀</span>
+            <span class="page-num">5</span>
+          </div>
+          <div class="page page-right">
+            <div class="note-paper">
+              Semoga selalu ada hal kecil tiap hari yang bikin si imut ini senyum tanpa alasan ✨
+            </div>
+            <span class="sticker" style="top:8%;right:8%">💫</span>
+            <span class="page-num">6</span>
+          </div>
+        </div>
+
+        <!-- HALAMAN 4 -->
+        <div class="spread" id="s4">
+          <div class="page page-left">
+            <div class="tape"></div>
+            <div class="polaroid" style="transform:translate(-50%,-55%) rotate(-6deg)">
+              <img src="media/ft4.jpeg" alt="foto 4">
+              <div class="polaroid-cap">delicia mea 💕</div>
+            </div>
+            <span class="sticker" style="bottom:8%;right:6%">🌺</span>
+            <span class="page-num">7</span>
+          </div>
+          <div class="page page-right">
+            <div class="note-paper">
+              I hope you're always surrounded by good feels and happiness. Don't be too hard on yourself — I'm always
+              keeping you in my prayers 🤍
+            </div>
+            <span class="sticker" style="top:6%;right:6%">⭐</span>
+            <span class="page-num">8</span>
+          </div>
+        </div>
+
+        <!-- HALAMAN 5 -->
+        <div class="spread" id="s5">
+          <div class="page page-left">
+            <div class="tape"></div>
+            <div class="polaroid">
+              <img src="media/ft5.jpeg" alt="foto 5">
+              <div class="polaroid-cap">My Fav Person 💕</div>
+            </div>
+            <span class="sticker" style="bottom:10%;left:8%">🌸</span>
+            <span class="page-num">9</span>
+          </div>
+          <div class="page page-right">
+            <div class="note-paper">
+              Thank you, my beautiful, sweet, cute, and my favorite person, for being part of my life 🌷
+            </div>
+            <span class="sticker" style="bottom:8%;right:6%">💖</span>
+            <span class="page-num">10</span>
+          </div>
+        </div>
+
+        <!-- BACK COVER -->
+        <div class="spread" id="s6">
+          <div class="page"
+            style="background:linear-gradient(135deg,#ffd7e9,#ffb3d1);display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;gap:10px">
+            <div style="font-size:clamp(30px,10vw,60px)">🎂</div>
+            <div style="font-family:Pacifico,cursive;font-size:clamp(14px,4vw,22px);color:var(--text)">Happy Birthday!
+            </div>
+            <div style="font-size:clamp(11px,3vw,14px);color:var(--muted);line-height:1.6">Semoga semua
+              doamu<br>terkabul tahun ini 🌟</div>
+          </div>
+          <div class="page"
+            style="background:linear-gradient(135deg,#c03060,#e8407a);display:flex;align-items:center;justify-content:center;flex-direction:column;color:#fff;text-align:center;gap:8px">
+            <div style="font-size:clamp(28px,9vw,50px)">💝</div>
+            <div style="font-family:Pacifico,cursive;font-size:clamp(13px,4vw,20px)">The End</div>
+            <div style="font-size:clamp(10px,2.5vw,13px);opacity:0.85">dibuat hanya<br>untukmu 🌷</div>
+          </div>
+        </div>
+
+      </div><!-- /book -->
+
+      <!-- NAVIGATION -->
+      <div class="book-nav">
+        <button class="nav-btn" id="prevPage">&#8592;</button>
+        <span class="page-indicator" id="pageIndicator">1 / 7</span>
+        <button class="nav-btn" id="nextPage">&#8594;</button>
+      </div>
+      <button class="close-btn" id="closeBook">Tutup Buku 📕</button>
+
+    </div>
+  </div><!-- /overlay -->
+
+  <script>
+    // Typewriter
+    const msgs = ['Happy level up day ✨', 'Another year older — congrats!', 'Have a fabulous birthday ♥', 'You are so loved 💕'];
+    const tw = document.getElementById('typewriter');
+    let mi = 0;
+    function typeLoop() {
+      const t = msgs[mi]; let i = 0; tw.textContent = '';
+      const iv = setInterval(() => {
+        tw.textContent += t.charAt(i); i++;
+        if (i > t.length) { clearInterval(iv); setTimeout(() => { mi = (mi + 1) % msgs.length; typeLoop() }, 2000) }
+      }, 55);
+    }
+    typeLoop();
+
+    // Music
+    const music = document.getElementById('bgMusic');
+    document.getElementById('playMusic').addEventListener('click', () => {
+      if (music.paused) { music.play(); document.getElementById('playMusic').textContent = '⏸ Pause Musik' }
+      else { music.pause(); document.getElementById('playMusic').textContent = '▶ Putar Musik' }
+    });
+
+    // Floating hearts
+    let heartsOn = false, heartIv = null, activeH = 0;
+    function makeHeart() {
+      if (activeH >= 10) return; activeH++;
+      const h = document.createElement('div'); h.className = 'heart';
+      const sz = 14 + Math.random() * 18;
+      h.style.cssText = `width:${sz}px;height:${sz}px;left:${10 + Math.random() * 80}%;background:${['#ff6fa3', '#ff8fb6', '#ffc4dd'][Math.floor(Math.random() * 3)]};position:fixed;bottom:-40px;transform:rotate(-45deg);pointer-events:none`;
+      h.style.setProperty('--s', sz + 'px');
+      const hb = h.cloneNode();
+      ['::before', '::after'].forEach(p => { });
+      // simple emoji heart fallback
+      h.innerHTML = '<span style="font-size:' + sz + 'px;display:block;">💕</span>';
+      h.style.transform = 'none'; h.style.background = 'none';
+      document.body.appendChild(h);
+      const rise = 250 + Math.random() * 200, drift = (Math.random() * 30 - 15), dur = 4000 + Math.random() * 2000;
+      h.animate([{ transform: `translate(0,0)`, opacity: .9 }, { transform: `translate(${drift}px,-${rise}px)`, opacity: 0 }], { duration: dur, easing: 'ease-out' }).onfinish = () => { h.remove(); activeH-- };
+    }
+    document.getElementById('toggleHearts').addEventListener('click', () => {
+      heartsOn = !heartsOn;
+      document.getElementById('toggleHearts').textContent = heartsOn ? '💕 Matikan Hati' : '💕 Floating Heart';
+      if (heartsOn) heartIv = setInterval(makeHeart, 700);
+      else clearInterval(heartIv);
+    });
+
+    // Confetti
+    const cv = document.getElementById('confettiCanvas'), cx = cv.getContext('2d');
+    function resize() { cv.width = innerWidth; cv.height = innerHeight }
+    resize(); window.addEventListener('resize', resize);
+    function launchConfetti() {
+      const cols = ['#ffb3d1', '#ffd7e9', '#ff8fb6', '#fff3f8', '#ff6fa3'], particles = [];
+      for (let i = 0; i < 120; i++)particles.push({ x: Math.random() * cv.width, y: -Math.random() * cv.height, w: 5 + Math.random() * 8, h: 7 + Math.random() * 8, vx: -2 + Math.random() * 4, vy: 2 + Math.random() * 5, rot: Math.random() * 360, vr: -5 + Math.random() * 10, color: cols[Math.floor(Math.random() * cols.length)] });
+      let run = true;
+      (function fr() {
+        if (!run) return; cx.clearRect(0, 0, cv.width, cv.height);
+        particles.forEach(p => { p.x += p.vx; p.y += p.vy; p.vy += .05; p.rot += p.vr; cx.save(); cx.translate(p.x, p.y); cx.rotate(p.rot * Math.PI / 180); cx.fillStyle = p.color; cx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h); cx.restore() });
+        requestAnimationFrame(fr)
+      })();
+      setTimeout(() => { run = false; cx.clearRect(0, 0, cv.width, cv.height) }, 4000);
+    }
+
+    // Book logic
+    const overlay = document.getElementById('bookOverlay');
+    const spreads = document.querySelectorAll('.spread');
+    const total = spreads.length;
+    let cur = 0;
+    function updateIndicator() { document.getElementById('pageIndicator').textContent = (cur + 1) + ' / ' + total }
+    function goTo(n) {
+      if (n < 0 || n >= total) return;
+
+      cur = n;
+
+      spreads.forEach((s, i) => {
+        s.classList.remove('active', 'prev');
+        if (i < cur) s.classList.add('prev');
+      });
+
+      spreads[cur].classList.add('active');
+
+      updateIndicator();
+
+      document.getElementById('prevPage').disabled = cur === 0;
+      document.getElementById('nextPage').disabled = cur === total - 1;
+    }
+    document.getElementById('prevPage').addEventListener('click', () => goTo(cur - 1));
+    document.getElementById('nextPage').addEventListener('click', () => goTo(cur + 1));
+
+    // Touch swipe
+    let tx0 = null;
+    document.getElementById('theBook').addEventListener('touchstart', e => { tx0 = e.touches[0].clientX }, { passive: true });
+    document.getElementById('theBook').addEventListener('touchend', e => {
+      if (tx0 === null) return;
+      const dx = e.changedTouches[0].clientX - tx0;
+      if (Math.abs(dx) > 40) { dx < 0 ? goTo(cur + 1) : goTo(cur - 1) }
+      tx0 = null;
+    }, { passive: true });
+
+    document.getElementById('openBook').addEventListener('click', () => {
+      overlay.classList.add('show');
+      goTo(0);
+      launchConfetti();
+    });
+    document.getElementById('closeBook').addEventListener('click', () => overlay.classList.remove('show'));
+    overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('show') });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') overlay.classList.remove('show') });
+
+    goTo(0);
+
+    // Share
+    document.getElementById('shareBtn').addEventListener('click', async () => {
+      try {
+        const f = new File([document.documentElement.outerHTML], 'ulang-tahun.html', { type: 'text/html' });
+        if (navigator.share) { await navigator.share({ files: [f], title: 'Selamat Ulang Tahun', text: 'Untukmu ❤️' }); return }
+      } catch (e) { }
+      try { await navigator.clipboard.writeText(document.documentElement.outerHTML); alert('HTML disalin ke clipboard!') }
+      catch (e) { alert('Silakan simpan manual ya') }
+    });
+  </script>
+</body>
+
+</html>
